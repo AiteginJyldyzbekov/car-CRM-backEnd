@@ -15,8 +15,6 @@ from django.contrib.auth import authenticate
 from drivers.models import Driver
 from drivers.serializers import DriverSerializer
 
-# Create your views here.
-
 class DriverViewSet(viewsets.ModelViewSet):
     serializer_class = DriverSerializer
     queryset = Driver.objects.all()
