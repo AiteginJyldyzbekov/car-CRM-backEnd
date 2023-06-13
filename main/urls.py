@@ -23,7 +23,6 @@ from drf_yasg import openapi
 from django.conf.urls.static import static
 from rest_framework.permissions import AllowAny
 
-# from rabota.views import *
 from drivers.urls import drivers_router
 from cars.urls import cars_router
 
