@@ -1,5 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from cars.models import Car
+from django.utils import timezone
+
+
 
 class Driver(AbstractUser):
     POSITION_CHOICES = (
@@ -9,6 +13,11 @@ class Driver(AbstractUser):
     )
     first_name = models.CharField("Имя", max_length=50)
     last_name = models.CharField("Фамилия", max_length=50)
+    surname = models.CharField("Отчество", max_length=50,blank=True)
+    rented_car = models.OneToOneField(Car,verbose_name='Арендованная машина',on_delete=models.DO_NOTHING,blank=True,null=True)
+    cash = models.IntegerField('Задолжность',default= 0 )
+    rented_date = models.DateField('Дата аренды',default=timezone.now)
+    cash_prove = models.ImageField('Фотография последнего чека',blank=True,null=True)
     birthday = models.DateField("Дата рождения", null=True, blank=True)
     avatar = models.ImageField(upload_to="drivers/avatars", null=True,verbose_name="Фотография водителя")
     position = models.CharField("Позиция пользователя", max_length=20, choices=POSITION_CHOICES, null=True)
