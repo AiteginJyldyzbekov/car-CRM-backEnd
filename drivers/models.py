@@ -26,6 +26,7 @@ class Driver(AbstractUser):
     email = models.EmailField("Email", unique=True)
     license_category = models.CharField("Категория права", max_length=10, null=True)
     driving_experience = models.CharField("Стаж вождения", max_length=20, null=True)
+    cash_verified = models.BooleanField("Верификация оплаты", default=False)
 
 
     class Meta:
