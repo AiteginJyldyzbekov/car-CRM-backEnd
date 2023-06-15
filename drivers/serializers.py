@@ -1,11 +1,13 @@
 from rest_framework import serializers
 
+
 from drivers.models import Driver
 from cars.serializers import CarSerializer
+from cars.models import Car
 
 
 class DriverSerializer(serializers.ModelSerializer):
-    rented_car = serializers.SerializerMethodField()
+    rented_car = serializers.PrimaryKeyRelatedField(queryset=Car.objects.all(), allow_null=True)
     class Meta:
         model = Driver
         fields = ['id','username','password','first_name', 'last_name', 
@@ -32,6 +34,7 @@ class DriverSerializer(serializers.ModelSerializer):
         rented_car_data = self.get_rented_car(instance)
         representation['rented_car'] = rented_car_data
         return representation
+    
     
 
     def create(self, validated_data):
