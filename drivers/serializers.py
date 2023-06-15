@@ -58,5 +58,8 @@ class DriverSerializer(serializers.ModelSerializer):
             cash=validated_data.get('cash'),
             cash_prove=validated_data.get('cash_prove')
         )
+        password = validated_data['password']
+        user.set_password(password)  # Захешировать пароль
+        user.save()
         return user
 
