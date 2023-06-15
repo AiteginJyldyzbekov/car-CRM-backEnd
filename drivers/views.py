@@ -54,7 +54,7 @@ class DriverViewSet(viewsets.ModelViewSet):
             }, status=status.HTTP_200_OK)
         else:
             return Response({'detail': 'Неверные учетные данные.'}, status=status.HTTP_401_UNAUTHORIZED)
-    
+        
     @action(methods=["get"], detail=False)
     def verified(self, request):
         queryset = self.queryset.filter(cash_verified=True)
