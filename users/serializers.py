@@ -1,15 +1,14 @@
 from rest_framework import serializers
 
 
-from drivers.models import Driver
-from cars.serializers import CarSerializer
+from users.models import User
 from cars.models import Car
 
 
-class DriverSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     rented_car = serializers.PrimaryKeyRelatedField(queryset=Car.objects.all(), allow_null=True)
     class Meta:
-        model = Driver
+        model = User
         fields = ['id','username','password','first_name', 'last_name', 
                   'surname', 'birthday', 'avatar', 'position', 
                   'phone','address', 'email', 'rented_car',
@@ -38,9 +37,8 @@ class DriverSerializer(serializers.ModelSerializer):
     
 
     def create(self, validated_data):
-        user = Driver.objects.create_user(
+        user = User.objects.create_user(
             username=validated_data['username'],
-            password=validated_data['password'],
             first_name=validated_data['first_name'],
             last_name=validated_data['last_name'],
             surname=validated_data.get('surname'),
