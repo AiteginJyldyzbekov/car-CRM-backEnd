@@ -16,7 +16,7 @@ from cars.serializers import CarSerializer, CarUpdateSerializer, CarCreateSerial
 class CarViewSet(viewsets.ModelViewSet):
     queryset = Car.objects.all()
     serializer_class = CarSerializer
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
     filter_backends = (rest_filters.DjangoFilterBackend, filters.SearchFilter)
     filterset_class = CarFilter
     search_fields = ['brand','model','vehicle_type']

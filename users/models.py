@@ -5,7 +5,7 @@ from django.utils import timezone
 from django.dispatch import receiver
 
 
-class Driver(AbstractUser):
+class User(AbstractUser):
     POSITION_CHOICES = (
         ('ADMIN', 'Администратор'),
         ('MANAGER', 'Менеджер'),

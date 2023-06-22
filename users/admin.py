@@ -1,5 +1,5 @@
 from django.contrib import admin
-from drivers.models import Driver
+from users.models import User 
 # Register your models here.
 
-admin.site.register(Driver)
+admin.site.register(User)
