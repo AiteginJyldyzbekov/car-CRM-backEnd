@@ -1,17 +1,20 @@
-from django.shortcuts import render
 from rest_framework import viewsets, permissions, status
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
 from django_filters import rest_framework as rest_filters
 from rest_framework import filters
 from rest_framework.decorators import action 
-from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
-from django.contrib.auth import authenticate
+from rest_framework import viewsets
+from rest_framework.decorators import action
+from rest_framework.response import Response
+
 
 from users.models import User
 from users.serializers import UserSerializer
 from users.filters import UserFilter
+# from users.serializers import PasswordResetSerializer, PasswordResetConfirmSerializer
+
 
 class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
@@ -41,4 +44,3 @@ class UserViewSet(viewsets.ModelViewSet):
         queryset = self.queryset.filter(cash_verified=True)
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
-    
