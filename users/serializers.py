@@ -74,65 +74,6 @@ class UserSerializer(serializers.ModelSerializer):
         user.set_password(password)  # Захешировать пароль
         user.save()
         return user
-    
-
-
-# class PasswordResetSerializer(serializers.Serializer):
-#     email = serializers.EmailField()
-
-#     def validate_email(self, value):
-#         try:
-#             User.objects.get(email=value)
-#         except User.DoesNotExist:
-#             raise serializers.ValidationError("User with this email does not exist.")
-#         return value
-    
-#     def create(self, validated_data):
-#         # Получите пользователя по электронной почте
-#         User = get_user_model()
-#         user = User.objects.get(email=validated_data['email'])
-
-#         # Создайте и отправьте ссылку для сброса пароля
-#         token = default_token_generator.make_token(user)
-#         reset_password_url = reverse('password_reset') + f'?uid={user.pk}&token={token}'
-#         email_subject = 'Сброс пароля'
-#         email_body = f'Для сброса пароля перейдите по ссылке: {reset_password_url}'
-#         send_mail(email_subject, email_body, 'from@example.com', [user.email])
-
-#         # Возвращаем что-то, если это необходимо
-#         return user
-
-# class PasswordResetConfirmSerializer(serializers.Serializer):
-#     uid = serializers.IntegerField()
-#     token = serializers.CharField()
-#     new_password = serializers.CharField()
-
-#     def validate_uid(self, value):
-#         User = get_user_model()
-#         try:
-#             User.objects.get(pk=value)
-#         except User.DoesNotExist:
-#             raise serializers.ValidationError(('Недопустимый идентификатор пользователя.'))
-#         return value
-
-#     def validate(self, data):
-#         uid = data.get('uid')
-#         token = data.get('token')
-#         new_password = data.get('new_password')
-
-#         User = get_user_model()
-#         user = User.objects.get(pk=uid)
-
-#         if not user.is_active:
-#             raise serializers.ValidationError(('Пользователь неактивен.'))
-
-#         if not user.check_password(new_password):
-#             # Валидация нового пароля с использованием формы SetPasswordForm Django
-#             password_validation = SetPasswordForm(user, {'new_password1': new_password})
-#             if not password_validation.is_valid():
-#                 raise serializers.ValidationError(password_validation.errors)
-
-#         return data
 
 
 class CustomTokenCreateSerializer(TokenCreateSerializer):
