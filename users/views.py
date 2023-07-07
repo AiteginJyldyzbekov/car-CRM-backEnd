@@ -13,21 +13,13 @@ from rest_framework.response import Response
 from users.models import User
 from users.serializers import UserSerializer
 from users.filters import UserFilter
-<<<<<<< HEAD
 from users.permissions import IsAdminOrReadOnly
-=======
-# from users.serializers import PasswordResetSerializer, PasswordResetConfirmSerializer
->>>>>>> 32f6fa64928120ba7576a4d4f23db3faf3c59756
 
 
 class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = User.objects.all()
-<<<<<<< HEAD
     permission_classes = [IsAdminOrReadOnly]
-=======
-    permission_classes = [permissions.AllowAny]
->>>>>>> 32f6fa64928120ba7576a4d4f23db3faf3c59756
     filter_backends = (rest_filters.DjangoFilterBackend, filters.SearchFilter)
     filterset_class = UserFilter
     search_fields = ['first_name','last_name','rented_date']
