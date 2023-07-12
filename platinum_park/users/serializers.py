@@ -22,6 +22,7 @@ User = get_user_model()
 class UserSerializer(serializers.ModelSerializer):
     rented_car = serializers.PrimaryKeyRelatedField(queryset=Car.objects.all(), allow_null=True)
     class Meta:
+        ref_name = "UsersUserSerializer"
         model = User
         fields = ['id','username','password','first_name', 'last_name', 
                   'surname', 'birthday', 'avatar', 'position', 
