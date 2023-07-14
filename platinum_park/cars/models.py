@@ -23,7 +23,8 @@ class Car(models.Model):
     last_checking = models.DateField("Последний технический осмотр", null=True)
     price_by_day = models.CharField("Цена по суточной оплаты", max_length=20, null=True)
     is_busy = models.BooleanField(default=False)
-   
+    top = models.BooleanField(default=False)
+    
 
     class Meta:
         verbose_name = "Автомобиль"

@@ -10,7 +10,7 @@ class CarSerializer(serializers.ModelSerializer):
                 'vehicle_type', 'image1', 'image2', 'image3',
                 'image4', 'image5', 'image6', 'passport_image',
                 'year_production', 'color', 'last_checking',
-                'price_by_day', 'is_busy']
+                'price_by_day', 'is_busy','top']
 
 class CarUpdateSerializer(serializers.ModelSerializer):
     class Meta:
@@ -19,7 +19,7 @@ class CarUpdateSerializer(serializers.ModelSerializer):
                 'vehicle_type', 'image1', 'image2', 
                 'image3', 'image4', 'image5', 'image6',
                 'passport_image','year_production', 'color',
-                'last_checking', 'price_by_day', 'is_busy']
+                'last_checking', 'price_by_day', 'is_busy', 'top']
 
 class CarCreateSerializer(serializers.ModelSerializer):
     class Meta:

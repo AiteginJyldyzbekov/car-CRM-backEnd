@@ -3,6 +3,7 @@ from rest_framework import routers
 from cars import views
 from cars.models import Car
 from cars.views import CarViewSet
+from users.models import User
 
 
 cars_router = routers.DefaultRouter()

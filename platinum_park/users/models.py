@@ -20,13 +20,15 @@ class User(AbstractUser):
     address = models.CharField("Место проживания", max_length=256, null=True)
     email = models.EmailField("Email", unique=True)
     rented_car = models.OneToOneField(Car,verbose_name='Арендованная машина',on_delete=models.DO_NOTHING,null=True)
-    rented_date = models.DateField('Дата аренды',default=timezone.now)
+    rented_date = models.DateField('Дата аренды "с"', null=True)
+    rented_to = models.DateField('Дата аренды "до"', null=True)
     license_category = models.CharField("Категория права", max_length=10, null=True)
     driving_experience = models.CharField("Стаж вождения", max_length=20, null=True)
     cash_verified = models.BooleanField("Верификация оплаты", default=False)
     cash = models.IntegerField('Задолжность',default= 0)
     cash_prove = models.ImageField('Фотография последнего чека', null=True)
-
+    published_at = models.DateTimeField('Время регистрации пользователя', auto_now_add=True, null=True)
+    
     class Meta:
         verbose_name = "Водитель"
         verbose_name_plural = "Водители"

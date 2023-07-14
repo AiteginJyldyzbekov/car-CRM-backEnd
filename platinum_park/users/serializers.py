@@ -27,8 +27,8 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['id','username','password','first_name', 'last_name', 
                   'surname', 'birthday', 'avatar', 'position', 
                   'phone','address', 'email', 'rented_car',
-                  'rented_date','license_category','driving_experience', 
-                  'cash_verified', 'cash','cash_prove' ]
+                  'rented_date', 'rented_to', 'license_category','driving_experience', 
+                  'cash_verified', 'cash','cash_prove','published_at' ]
         extra_kwargs = {'password':{'write_only':True}}
 
     def get_rented_car(self, instance):
